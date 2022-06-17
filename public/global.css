@@ -1,0 +1,75 @@
+* {
+  font-family: Oswald, Verdana, Arial, san-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* navigation bar adjustments */
+#nav-bar {
+  background-color: hsla(103, 31%, 45%, 0.8);
+  color: white;
+}
+/* set link spacing  */
+#nav-bar-links {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  margin: auto;
+}
+
+/* remove nav link underlines */
+a {
+  text-decoration: underline solid transparent;
+  text-underline-offset: 0.2rem;
+  /* fade in the text underline */
+  transition: 0.5s ease;
+  color: white;
+  letter-spacing: 0.05em;
+}
+/* link hover styles */
+a:hover {
+  cursor: pointer;
+  text-decoration: underline solid white;
+  text-underline-offset: 0.2rem;
+  text-shadow: 0 0 2rem rgb(255, 255, 255);
+}
+
+/* hero image styling */
+.background-image {
+  background-image: url(./hero.jpg);
+  background-color: rgb(253, 206, 144);
+  background-position: center center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  z-index: -2;
+  top: 0;
+  left: -10;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* footer adjustments */
+footer {
+  background-color: hsla(0, 0%, 35%, 0.8);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+/* spacing of the footer sections */
+.text-wrapper {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  width: 60%;
+  margin: auto;
+}
+/* text color */
+.footer-text {
+  padding: 1rem;
+  color: white;
+  opacity: 80%;
+}
