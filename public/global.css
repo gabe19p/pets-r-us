@@ -1,3 +1,15 @@
+/* 
+;============================================
+; Title: Pets-R-Us Assignment
+; Author: Danial Purselley
+; Date: 19 June 2022
+; Modified By: Danial Purselley
+; Description: The program will simulate
+; a pets-r-us page for web-340. This is the 
+; style sheet for the project.
+;=========================================== 
+*/
+
 * {
   font-family: Oswald, Verdana, Arial, san-serif;
   margin: 0;
@@ -32,6 +44,9 @@
 }
 .half-width {
   width: 40%;
+}
+.fill {
+  width: 80%;
 }
 
 /* navigation bar adjustments */
@@ -194,4 +209,27 @@ ul > li {
   background-position: center center;
   height: 20rem;
   width: 100%;
+}
+/* contact form styling */
+.input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid hsla(103, 34%, 63%, 1);
+  margin-top: 3rem;
+}
+/* set contact hover color */
+.input:hover {
+  cursor: pointer;
+  background-color: hsla(10, 100%, 100%, 0.5);
+}
+/* submit button styles */
+.btn {
+  border: 1px solid hsla(10, 100%, 100%, 0.5);
+  background-color: hsla(103, 34%, 63%, 0.8);
+}
+.btn:hover {
+  cursor: pointer;
+  border: 1px solid rgb(87, 87, 87, 0.5);
+  background-color: hsla(103, 34%, 63%, 1);
+  box-shadow: 0 0 0.5rem gray;
 }
