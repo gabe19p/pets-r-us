@@ -1,15 +1,38 @@
+// ============================================
+//  Title: Pets-R-Us Assignment
+//  Author: Danial Purselley
+//  Date: 19 June 2022
+//  Modified By: Danial Purselley
+//  Description: The program will simulate
+//  a pets-r-us page for web-340. This is the
+//  index javascript file to run the node
+//  and express server instance.
+// ===========================================
+
 const express = require("express");
 const path = require("path");
 const app = express();
 
+//  tell express that the public directory holds the site assets
+app.use(express.static(__dirname + "/public")); // allows me to connect to my css + image files
+
+//  index route for landing
 app.get("/", (req, res) => {
-  //get method
-  res.sendFile(path.join(__dirname, "./views/index.html")); //respond with index
+  res.sendFile(path.join(__dirname + "/views/index.html")); //respond with index.html
 });
-
+//  grooming route via anchor link or direct paste
 app.get("/grooming", (req, res) => {
-  //get method
-  res.sendFile(path.join(__dirname, "./views/grooming.html")); //respond with grooming
+  res.sendFile(path.join(__dirname + "/views/grooming.html")); //respond with grooming
+});
+//  incomplete route for the pages yet to be finished
+app.get("/incomplete", (req, res) => {
+  res.send("Page Incomplete");
 });
 
+//  send user back to homepage after submitting a contact request
+app.get("/submit", (req, res) => {
+  res.sendFile(path.join(__dirname + "/views/index.html")); //respond with index.html
+});
+
+//  set the server to listen on port 3000
 app.listen(3000);
