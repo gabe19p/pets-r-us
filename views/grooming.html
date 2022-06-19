@@ -1,3 +1,14 @@
+<!-- 
+;============================================
+; Title: Pets-R-Us Assignment
+; Author: Danial Purselley
+; Date: 19 June 2022
+; Modified By: Danial Purselley
+; Description: The program will simulate
+; a pets-r-us page for web-340.
+;=========================================== 
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +21,7 @@
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap"
     />
     <!-- CSS style sheets -->
-    <link rel="stylesheet" href="../public/global.css" />
+    <link rel="stylesheet" href="global.css" />
     <!-- page title -->
     <title>Pets-R-Us</title>
   </head>
@@ -21,19 +32,19 @@
         <div id="nav-bar-links">
           <!-- individual link wrappers -->
           <div class="link-wrapper">
-            <a href="index.html">Homepage</a>
+            <a href="/">Homepage</a>
           </div>
           <!-- individual link wrappers -->
           <div class="link-wrapper">
-            <a href="grooming.html">Grooming</a>
+            <a href="/grooming">Grooming</a>
           </div>
           <!-- individual link wrappers -->
           <div class="link-wrapper">
-            <a href="">Boarding</a>
+            <a href="/incomplete">Boarding</a>
           </div>
           <!-- individual link wrappers -->
           <div class="link-wrapper">
-            <a href="">Training</a>
+            <a href="/incomplete">Training</a>
           </div>
           <!-- individual link wrappers -->
           <div class="link-wrapper">
@@ -52,18 +63,29 @@
     <main id="container">
       <!-- header wrapper -->
       <div class="content-wrapper">
-        <div class="center large-text">Fresh Cuts</div>
+        <div class="center large-text">Cleaning Central</div>
         <div id="wash"></div>
       </div>
 
       <!-- testimony wrapper -->
       <div class="content-wrapper">
-        <div class="small-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ducimus
-          voluptatum doloremque? Ipsum nihil quas blanditiis itaque quisquam cum
-          at eligendi, debitis sit, quidem error, nulla recusandae possimus vero
-          totam.
+        <div class="small-text center">
+          Long hair don’t care? Want to be cool for the summer? Just need a nice
+          clean up before the pet show? Pets-R-Us does it all, from washing, to
+          brushing, to nail trimming. All of our prices are listed down below.
+          <br />
+          <br />
+          Pets-R-Us is dedicated to serving our local community for all your pet
+          needs. We have a robust team of cleaners that are able to assist in
+          all matters in regard to animal hygiene. We are also committed to
+          establishing a more environmentally friendly cleaning process.
+          <br />
+          <br />
+          Please feel free to contact us so that we can better serve you!
         </div>
+        <br />
+        <br />
+        <hr />
       </div>
 
       <!-- pricing wrapper -->
@@ -76,6 +98,44 @@
           <li>Shave: $40</li>
           <li>Full-Service: $50</li>
         </ul>
+        <br />
+        <br />
+        <hr />
+      </div>
+
+      <!-- contact form -->
+      <div class="content-wrapper center">
+        <form action="submit">
+          <div class="text-field underlined">Contact Us</div>
+
+          <input
+            type="text"
+            class="fill input"
+            id="name"
+            placeholder="Full Name"
+          />
+          <br />
+          <input
+            type="email"
+            class="fill input"
+            id="email"
+            placeholder="Email Address"
+          />
+          <br />
+          <textarea
+            class="fill input"
+            name="message"
+            id="message"
+            cols="30"
+            rows="10"
+            placeholder="Message"
+          ></textarea>
+          <br />
+          <button class="btn fill" name="submit" id="submit">Send Email</button>
+        </form>
+
+        <!-- divider -->
+        <br />
       </div>
     </main>
 
@@ -88,6 +148,11 @@
     </footer>
 
     <!-- start of javascript -->
+    <script>
+      document.getElementById("submit").onclick = function () {
+        alert("Email Sent");
+      };
+    </script>
   </body>
 </html>
 

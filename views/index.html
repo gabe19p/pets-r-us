@@ -1,3 +1,14 @@
+<!-- 
+;============================================
+; Title: Pets-R-Us Assignment
+; Author: Danial Purselley
+; Date: 19 June 2022
+; Modified By: Danial Purselley
+; Description: The program will simulate
+; a pets-r-us page for web-340.
+;=========================================== 
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +21,7 @@
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap"
     />
     <!-- CSS style sheets -->
-    <link rel="stylesheet" href="../public/global.css" />
+    <link rel="stylesheet" type="text/css" href="global.css" />
     <!-- page title -->
     <title>Pets-R-Us</title>
   </head>
@@ -21,23 +32,23 @@
         <div id="nav-bar-links">
           <!-- individual link wrappers -->
           <div class="link-wrapper">
-            <a href="index.html">Homepage</a>
+            <a href="/">Homepage</a>
           </div>
           <!-- individual link wrappers -->
           <div class="link-wrapper">
-            <a href="grooming.html">Grooming</a>
+            <a href="/grooming">Grooming</a>
           </div>
           <!-- individual link wrappers -->
           <div class="link-wrapper">
-            <a href="">Boarding</a>
+            <a href="/incomplete">Boarding</a>
           </div>
           <!-- individual link wrappers -->
           <div class="link-wrapper">
-            <a href="">Training</a>
+            <a href="/incomplete">Training</a>
           </div>
           <!-- individual link wrappers -->
           <div class="link-wrapper">
-            <a href="">Profile</a>
+            <a href="/incomplete">Profile</a>
           </div>
         </div>
       </nav>
@@ -59,8 +70,8 @@
       <div class="content-wrapper center">
         <!-- text representation of address -->
         <div class="text-field padded">
-          Conveniently located in downtown Dallas, TX. Walking distance from 3
-          dog parks! Right across from the Hilton.
+          Conveniently located in downtown Dallas. Walking distance from 3 dog
+          parks! Right across from the Hilton.
           <br />
         </div>
         <!-- address -->
@@ -82,6 +93,10 @@
             <li>Sat: 0900-2000</li>
           </ul>
         </div>
+
+        <!-- divider -->
+        <br />
+        <hr />
       </div>
 
       <!-- additional location wrapper -->
@@ -95,6 +110,49 @@
           small. For any inquiries about non-standard pet service requests,
           please reach out to our store.
         </div>
+
+        <!-- divider -->
+        <br />
+        <br />
+        <hr />
+      </div>
+
+      <!-- contact form -->
+      <div class="content-wrapper center">
+        <form action="submit">
+          <div class="text-field underlined">Contact Us</div>
+
+          <input
+            type="text"
+            class="fill input"
+            id="name"
+            placeholder="Full Name"
+          />
+          <br />
+          <input
+            type="email"
+            class="fill input"
+            id="email"
+            placeholder="Email Address"
+          />
+          <br />
+          <textarea
+            class="fill input"
+            name="message"
+            id="message"
+            cols="30"
+            rows="10"
+            placeholder="Message"
+          ></textarea>
+          <br />
+          <button class="btn fill" name="submit" id="submit">Send Email</button>
+        </form>
+
+        <!-- divider -->
+        <br />
+        <br />
+        <br />
+        <hr />
       </div>
 
       <!-- dog of the week wrapper -->
@@ -109,6 +167,10 @@
           </div>
           <div id="sadie"></div>
         </div>
+
+        <!-- divider -->
+        <br />
+        <hr />
       </div>
 
       <!-- customer testimonials -->
@@ -117,23 +179,25 @@
         <!-- first customer testimony -->
         <div class="content-wrapper center">
           <div class="small-text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt
-            similique nesciunt adipisci sapiente unde possimus, illum veniam
-            eum, doloribus iusto tempore itaque debitis voluptas sequi
-            perferendis commodi. Nisi, quae unde. <br />
+            Pets-R-Us has given me a safe place to be able to take my new dog
+            and get him trained. Thanks to the great training team, I can now
+            confidently take Snoopy on walks without fear of him running off.<br />
             -Madison P.
           </div>
+          <br />
           <div id="person-1" class="center"></div>
+          <br />
+          <br />
         </div>
         <!-- second customer testimony -->
         <div class="content-wrapper center">
           <div class="small-text">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo
-            voluptatem amet aliquam cumque nisi, temporibus rerum repellendus
-            quam sapiente quis sunt, esse sint. Officiis corporis quas
-            repellendus magni accusantium consequuntur. <br />
+            French Bulldogs are a very high maintenance breed. With the help of
+            the grooming team at Pets-R-Us, we are able to lessen Milo's
+            allergies. <br />
             -Samuel L. J.
           </div>
+          <br />
           <div id="person-2" class="center"></div>
         </div>
       </div>
@@ -148,6 +212,11 @@
     </footer>
 
     <!-- start of javascript -->
+    <script>
+      document.getElementById("submit").onclick = function () {
+        alert("Email Sent");
+      };
+    </script>
   </body>
 </html>
 
