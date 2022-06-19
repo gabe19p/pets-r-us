@@ -12,6 +12,9 @@
 .large-text {
   font-size: 5rem;
 }
+.small-text {
+  font-size: 1.25rem;
+}
 .separated {
   justify-content: space-around;
 }
@@ -22,10 +25,13 @@
   display: inline-block;
 }
 .underlined {
-  text-decoration: underline solid black;
+  text-decoration: underline;
 }
 .padded {
   padding: 1.5rem;
+}
+.half-width {
+  width: 40%;
 }
 
 /* navigation bar adjustments */
@@ -43,25 +49,26 @@
 }
 
 /* remove nav link underlines */
-a {
-  text-decoration: underline solid transparent;
+a,
+a:active,
+a:visited {
   text-underline-offset: 0.2rem;
-  /* fade in the text underline */
-  transition: 0.5s ease;
-  color: white;
   letter-spacing: 0.05em;
+  text-decoration: none;
+  color: white;
 }
 /* link hover styles */
 a:hover {
-  cursor: pointer;
-  text-decoration: underline solid white;
+  text-shadow: 0 0.2rem 0.5rem rgb(135, 135, 135);
   text-underline-offset: 0.2rem;
-  text-shadow: 0 0 2rem rgb(255, 255, 255);
+  text-decoration: underline;
+  letter-spacing: 0.05em;
+  cursor: pointer;
 }
 
 /* hero image styling */
 .background-image {
-  background-image: url(./hero.jpg);
+  background-image: url(./images/hero.jpg);
   background-color: rgb(253, 206, 144);
   background-position: center center;
   position: fixed;
@@ -132,20 +139,59 @@ footer {
 
 /* Set the size of the div element that contains the map */
 #map {
-  background-image: url(./dallas.png);
+  background-image: url(./images/dallas.png);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: contain;
-  height: 70vh;
-  min-height: 380px;
+  background-size: cover;
+  height: 50rem;
   max-height: 640px;
-  width: 100%;
+  min-height: 230px;
+  min-width: 230px;
+  width: 50rem;
+  margin: auto;
 }
-
+/* space the store hours closer to the header */
 #hours {
   padding: none;
 }
 /* remove the bullets from list items */
 ul > li {
   list-style-type: none;
+}
+/* top pup image */
+#sadie {
+  background-image: url(./images/sadie.JPG);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  height: 20rem;
+  width: 80%;
+  min-width: 50%;
+}
+/* dog washing photo */
+#wash {
+  background-image: url(./images/wash.jpeg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  height: 20rem;
+  width: 100%;
+}
+/* testimony 1 photo */
+#person-1 {
+  background-image: url(./images/person-1.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 20rem;
+  width: 100%;
+}
+/* testimony 2 photo */
+#person-2 {
+  background-image: url(./images/person-2.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 20rem;
+  width: 100%;
 }
