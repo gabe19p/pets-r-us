@@ -50,34 +50,92 @@
 
     <!-- floating content div -->
     <main id="container">
+      <!-- large location name div -->
       <div class="content-wrapper">
-        <!-- large location name div -->
         <div class="center large-text">Dallas, TX</div>
       </div>
 
-      <!-- store location wrapper -->
-      <div class="content-wrapper">
+      <!-- store location information wrapper -->
+      <div class="content-wrapper center">
+        <!-- text representation of address -->
         <div class="text-field padded">
           Conveniently located in downtown Dallas, TX. Walking distance from 3
           dog parks! Right across from the Hilton.
           <br />
         </div>
-        <div class="text-field center padded">1305 Parkway Dallas, TX</div>
-        <div id="map" class="center"></div>
+        <!-- address -->
+        <div class="text-field">1305 Parkway Dallas, TX</div>
+        <div class="content-wrapper center flex">
+          <!-- map div -->
+          <div id="map"></div>
+        </div>
+        <!-- store hours wrapper -->
+        <div class="content-wrapper">
+          <div class="text-field underlined">Store Hours</div>
+          <ul class="small-text">
+            <li>Sun: Closed</li>
+            <li>Mon: 0800-1900</li>
+            <li>Tue: 0800-1900</li>
+            <li>Wed: 0800-1900</li>
+            <li>Thu: 0800-1900</li>
+            <li>Fri: 0800-1900</li>
+            <li>Sat: 0900-2000</li>
+          </ul>
+        </div>
       </div>
 
-      <!-- store hours wrapper -->
-      <div class="content-wrapper center">
-        <div class="text-field underlined">Store Hours</div>
-        <ul>
-          <li>Sun: Closed</li>
-          <li>Mon: 0800-1900</li>
-          <li>Tue: 0800-1900</li>
-          <li>Wed: 0800-1900</li>
-          <li>Thu: 0800-1900</li>
-          <li>Fri: 0800-1900</li>
-          <li>Sat: 0900-2000</li>
-        </ul>
+      <!-- additional location wrapper -->
+      <div class="content-wrapper">
+        <div class="text-field center underlined">Locations</div>
+        <div class="small-text center">
+          Pets-R-Us has 250 stores nationwide. Most major cities, to include
+          Houston, Austin, San Antonio, Atlanta, Vegas, New York, LA and more.
+          We pride ourselves on being able to serve our communities all across
+          the country. We offer a wide range of services for all pets large and
+          small. For any inquiries about non-standard pet service requests,
+          please reach out to our store.
+        </div>
+      </div>
+
+      <!-- dog of the week wrapper -->
+      <div class="content-wrapper">
+        <!-- pup header -->
+        <div class="text-field center underlined">Pick of the Litter</div>
+        <!-- paragraph and photo wrapper -->
+        <div class="content-wrapper flex">
+          <div class="small-text center">
+            This week's top pup is Sadie! She loves to snuggle up on the couch,
+            swim in the pool and chase her brother Milo.
+          </div>
+          <div id="sadie"></div>
+        </div>
+      </div>
+
+      <!-- customer testimonials -->
+      <div class="content-wrapper">
+        <div class="text-field underlined center">Customer Testimonials</div>
+        <!-- first customer testimony -->
+        <div class="content-wrapper center">
+          <div class="small-text">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt
+            similique nesciunt adipisci sapiente unde possimus, illum veniam
+            eum, doloribus iusto tempore itaque debitis voluptas sequi
+            perferendis commodi. Nisi, quae unde. <br />
+            -Madison P.
+          </div>
+          <div id="person-1" class="center"></div>
+        </div>
+        <!-- second customer testimony -->
+        <div class="content-wrapper center">
+          <div class="small-text">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo
+            voluptatem amet aliquam cumque nisi, temporibus rerum repellendus
+            quam sapiente quis sunt, esse sint. Officiis corporis quas
+            repellendus magni accusantium consequuntur. <br />
+            -Samuel L. J.
+          </div>
+          <div id="person-2" class="center"></div>
+        </div>
       </div>
     </main>
 
@@ -94,7 +152,7 @@
 </html>
 
 <!-- requirements
-dog of the week
+
 testimony
 contact
 -->
