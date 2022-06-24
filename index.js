@@ -26,22 +26,30 @@ app.use(express.static(__dirname + "/public")); // allows me to connect to my cs
 
 //  index route for landing
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", {
+    'title': 'Pets-R-Us'
+  });
 });
 
 //  grooming route via anchor link or direct paste
 app.get("/grooming", (req, res) => {
-  res.render("grooming"); //respond with grooming
+  res.render("grooming", {
+    'title': "Grooming"
+  }); //respond with grooming
 });
 
 //  boarding route via nav bar
 app.get('/boarding', (req, res) => {
-  res.render("boarding") //respond with boarding
+  res.render("boarding", {
+    'title': "Boarding"
+  }) //respond with boarding
 })
 
 //  training route via nav bar
 app.get('/training', (req, res) => {
-  res.render("training") //respond with boarding
+  res.render("training", {
+    'title': "Training"
+  }) //respond with boarding
 })
 
 //  incomplete route for the pages yet to be finished
