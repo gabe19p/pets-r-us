@@ -27,30 +27,30 @@ app.use(express.static(__dirname + "/public")); // allows me to connect to my cs
 //  index route for landing
 app.get("/", (req, res) => {
   res.render("index", {
-    'title': 'Pets-R-Us'
+    title: "Pets-R-Us",
   });
 });
 
 //  grooming route via anchor link or direct paste
 app.get("/grooming", (req, res) => {
   res.render("grooming", {
-    'title': "Grooming"
+    title: "Grooming",
   }); //respond with grooming
 });
 
 //  boarding route via nav bar
-app.get('/boarding', (req, res) => {
+app.get("/boarding", (req, res) => {
   res.render("boarding", {
-    'title': "Boarding"
-  }) //respond with boarding
-})
+    title: "Boarding",
+  }); //respond with boarding
+});
 
 //  training route via nav bar
-app.get('/training', (req, res) => {
+app.get("/training", (req, res) => {
   res.render("training", {
-    'title': "Training"
-  }) //respond with boarding
-})
+    title: "Training",
+  }); //respond with boarding
+});
 
 //  incomplete route for the pages yet to be finished
 app.get("/incomplete", (req, res) => {
@@ -59,7 +59,9 @@ app.get("/incomplete", (req, res) => {
 
 //  send user back to homepage after submitting a contact request
 app.get("/submit", (req, res) => {
-  res.sendFile(path.join(__dirname + "/views/index.html")); //respond with index.html
+  res.render("index", {
+    title: "Pets-R-Us",
+  }); //respond with index.html
 });
 
 //  set the server to listen on port 3000
