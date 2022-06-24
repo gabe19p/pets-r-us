@@ -1,0 +1,115 @@
+<!-- 
+;============================================
+; Title: Pets-R-Us Assignment
+; Author: Danial Purselley
+; Date: 24 June 2022
+; Modified By: Danial Purselley
+; Description: The program will simulate
+; a pets-r-us page for web-340.
+;=========================================== 
+ -->
+<%- include("header.html") %>
+<main id="container">
+  <!-- top heading and photo wrapper -->
+  <div class="content-wrapper">
+    <div class="large-text center">Puppy Pre-School</div>
+    <br>
+    <div id="training"></div>
+  </div>
+
+  <!-- write up wrapper -->
+  <div class="content-wrapper">
+    <div class="small-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit cumque
+      ducimus doloremque, reprehenderit illum maxime provident similique
+      doloribus, nam at placeat est eius officia reiciendis repellat odio unde
+      eum deleniti.
+    </div>
+    <br />
+    <br />
+    <hr />
+  </div>
+
+  <!-- trainer wrapper -->
+  <div class="content-wrapper">
+    <div class="text-field center">Zane</div>
+    <!-- dog trainer biography -->
+    <div class="small-text center">
+      With 3 years of dog training experience, Zane is a top of the line trainer on our team. His skill-set ranges from puppies to your old furry friends. Zane has an astonishing track record, producing 4 different blue ribbon dogs. You will not be disappointed with the transformation in your pooch.
+    </div>
+    <br>
+    <!-- dog trainer photo -->
+    <div id="zane"></div>
+    <br />
+    <br />
+    <hr />
+  </div>
+
+  <!-- pricing wrapper -->
+  <div class="content-wrapper center">
+    <div class="text-field underlined">Pricing Options</div>
+    <div class="flex padded">
+      <!-- 5 nights or less list -->
+      <div class="center">
+        <div class="small-text underlined">Level 1 Training</div>
+        <ul class="small-text">
+          <li>1 Dog: $30/night</li>
+          <li>2 Dogs: $50/night</li>
+          <li>3 Dogs: $40/night</li>
+        </ul>
+      </div>
+      <!-- 5 nights or more list -->
+      <div class="center">
+        <div class="small-text underlined">Level 2 Training</div>
+        <ul class="small-text">
+          <li></li>
+          <li>2 Dogs: $40/night</li>
+          <li>3 Dogs: $30/night</li>
+        </ul>
+      </div>
+    </div>
+    <br />
+    <br />
+    <hr />
+  </div>
+
+  <!-- contact form -->
+  <div class="content-wrapper center">
+    <form action="submit">
+        <div class="text-field underlined">Contact Us</div>
+
+        <input
+        type="text"
+        class="fill input"
+        id="name"
+        placeholder="Full Name"
+        />
+        <br />
+        <input
+        type="email"
+        class="fill input"
+        id="email"
+        placeholder="Email Address"
+        />
+        <br />
+        <textarea
+        class="fill input"
+        name="message"
+        id="message"
+        cols="30"
+        rows="10"
+        placeholder="Message"
+        ></textarea>
+        <br />
+        <button class="btn fill" name="submit" id="submit">Send Email</button>
+    </form>
+    <br>
+    <br>
+</main>
+<%- include("footer.html") %>
+
+<!-- requirements:
+250 word write up
+meet trainer - bio and photo
+pricing, pups, teens, adults, 2 services each
+-->
