@@ -8,59 +8,9 @@
 ; a pets-r-us page for web-340.
 ;=========================================== 
  -->
+<%- include('header.html') %>
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Google font kit -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap"
-    />
-    <!-- CSS style sheets -->
-    <link rel="stylesheet" href="global.css" />
-    <!-- page title -->
-    <title>Pets-R-Us</title>
-  </head>
-  <body>
-    <!-- header for nav bar -->
-    <header>
-      <nav id="nav-bar">
-        <div id="nav-bar-links">
-          <!-- individual link wrappers -->
-          <div class="link-wrapper">
-            <a href="/">Homepage</a>
-          </div>
-          <!-- individual link wrappers -->
-          <div class="link-wrapper">
-            <a href="/grooming">Grooming</a>
-          </div>
-          <!-- individual link wrappers -->
-          <div class="link-wrapper">
-            <a href="/incomplete">Boarding</a>
-          </div>
-          <!-- individual link wrappers -->
-          <div class="link-wrapper">
-            <a href="/incomplete">Training</a>
-          </div>
-          <!-- individual link wrappers -->
-          <div class="link-wrapper">
-            <a href="">Profile</a>
-          </div>
-        </div>
-      </nav>
-      <!-- background image -->
-      <section class="hero-wrapper">
-        <div class="background-image"></div>
-        <div id="hero-txt" class="center">Grooming</div>
-      </section>
-    </header>
-
-    <!-- floating content div -->
-    <main id="container">
+<main id="container">
       <!-- header wrapper -->
       <div class="content-wrapper">
         <div class="center large-text">Cleaning Central</div>
@@ -137,27 +87,6 @@
         <!-- divider -->
         <br />
       </div>
-    </main>
+</main>
 
-    <!-- footer elements -->
-    <footer>
-      <div class="footer-wrapper">
-        <section class="footer-text">Designed by: Danial Purselley</section>
-        <section class="footer-text">web-340 node.js</section>
-      </div>
-    </footer>
-
-    <!-- start of javascript -->
-    <script>
-      document.getElementById("submit").onclick = function () {
-        alert("Email Sent");
-      };
-    </script>
-  </body>
-</html>
-
-<!-- requirements
-
-testimony
-contact
--->
+<%- include('footer.html') %>
