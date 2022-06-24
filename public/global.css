@@ -173,43 +173,7 @@ footer {
 ul > li {
   list-style-type: none;
 }
-/* top pup image */
-#sadie {
-  background-image: url(./images/sadie.JPG);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-  height: 20rem;
-  width: 80%;
-  min-width: 50%;
-}
-/* dog washing photo */
-#wash {
-  background-image: url(./images/wash.jpeg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-  height: 20rem;
-  width: 100%;
-}
-/* testimony 1 photo */
-#person-1 {
-  background-image: url(./images/person-1.jpeg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: 20rem;
-  width: 100%;
-}
-/* testimony 2 photo */
-#person-2 {
-  background-image: url(./images/person-2.webp);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: 20rem;
-  width: 100%;
-}
+
 /* contact form styling */
 .input {
   background-color: transparent;
@@ -232,4 +196,73 @@ ul > li {
   border: 1px solid rgb(87, 87, 87, 0.5);
   background-color: hsla(103, 34%, 63%, 1);
   box-shadow: 0 0 0.5rem gray;
+}
+
+/* 
+; photo stylings
+ */
+
+/* testimony 1 photo */
+#person-1 {
+  background-image: url(./images/person-1.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 20rem;
+  width: 100%;
+}
+/* testimony 2 photo */
+#person-2 {
+  background-image: url(./images/person-2.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 20rem;
+  width: 100%;
+}
+/* top pup image */
+#sadie {
+  background-image: url(./images/sadie.JPG);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  height: 20rem;
+  width: 80%;
+  min-width: 50%;
+}
+/* dog washing photo */
+#wash {
+  background-image: url(./images/wash.jpeg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  height: 20rem;
+  width: 100%;
+}
+/* dog boarding top photo */
+#boarding {
+  background-image: url(./images/boarding.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  height: 20rem;
+  width: 100%;
+}
+/* dog training page photo */
+#training {
+  background-image: url(./images/training.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  height: 20rem;
+  width: 100%;
+}
+/* dog trainer photo */
+#zane {
+  background-image: url(./images/zane.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  height: 20rem;
+  width: 100%;
 }
