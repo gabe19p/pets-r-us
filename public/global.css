@@ -48,6 +48,9 @@
 .fill {
   width: 80%;
 }
+.black {
+  color: black;
+}
 
 /* navigation bar adjustments */
 #nav-bar {
