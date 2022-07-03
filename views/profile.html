@@ -1,0 +1,52 @@
+<%- include("header.html") %>
+<main id="container">
+  <!-- wrapper for login/sign-up -->
+  <div class="content-wrapper">
+    <div class="text-field center">Create an Account</div>
+    <form action="/profile" method="post" class="center">
+      <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Username"
+        class="fill"
+        required
+        autofocus
+      />
+      <br />
+      <br />
+      <input
+        type="text"
+        name="password"
+        id="password"
+        placeholder="Password"
+        class="fill"
+        required
+      />
+      <br />
+      <br />
+      <input
+        type="text"
+        name="email"
+        id="email"
+        placeholder="Email"
+        class="fill"
+      />
+      <br />
+      <br />
+      <button type="submit" class="btn fill">Sign Up!</button>
+    </form>
+  </div>
+
+  <!-- wrapper for registered users -->
+  <div class="content-wrapper">
+    <div class="text-field center underlined">Registered Users</div>
+    <div class="content-wrapper small-text center">
+      <% userList.forEach(user => { %>
+      <div class="small-text"><%= user.name() %></div>
+      <br />
+      <% }) %>
+    </div>
+  </div>
+</main>
+<%- include("footer.html") %>
