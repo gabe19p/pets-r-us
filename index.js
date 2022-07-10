@@ -70,7 +70,6 @@ app.get("/", (req, res, next) => {
       res.render("index", {
         title: "Pets-R-Us",
         users: users,
-        user: "test",
       });
     });
 });
@@ -79,7 +78,6 @@ app.get("/", (req, res, next) => {
 app.get("/grooming", (req, res) => {
   res.render("grooming", {
     title: "Grooming",
-    user: "test",
   }); //respond with grooming
 });
 
@@ -87,7 +85,6 @@ app.get("/grooming", (req, res) => {
 app.get("/boarding", (req, res) => {
   res.render("boarding", {
     title: "Boarding",
-    user: "test",
   }); //respond with boarding
 });
 
@@ -95,7 +92,6 @@ app.get("/boarding", (req, res) => {
 app.get("/training", (req, res) => {
   res.render("training", {
     title: "Training",
-    user: "test",
   }); //respond with boarding
 });
 
@@ -106,7 +102,6 @@ app.get("/register", (req, res) => {
     res.render("register", {
       title: "My Account",
       userList: users, //  user list that is iterated in /profile.html
-      user: "test",
     });
   });
 });
@@ -147,7 +142,6 @@ app.get("/login", (req, res) => {
   User.find({}, function (err, users) {
     res.render("login", {
       title: "Log In",
-      user: "test",
     });
   });
 });
@@ -169,10 +163,6 @@ app.get("/logout", function (req, res, next) {
     res.redirect("/login");
   });
 });
-
-// app.get("/logout", ensureAuthenticated, function (req, res) {
-//   res.render("/");
-// });
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
