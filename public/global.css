@@ -85,6 +85,26 @@ a:hover {
   cursor: pointer;
 }
 
+#profile {
+  text-underline-offset: 0.2rem;
+  letter-spacing: 0.05em;
+}
+#profile:hover {
+  text-shadow: 0 0.2rem 0.5rem rgb(135, 135, 135);
+  text-underline-offset: 0.2rem;
+  text-decoration: underline;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.account-wrapper {
+  width: 5rem;
+  position: absolute;
+  text-align: center;
+  background-color: hsla(0, 0%, 35%, 0.8);
+  padding: 0.5rem;
+}
+
 /* hero image styling */
 .background-image {
   background-image: url(./images/hero.jpg);
