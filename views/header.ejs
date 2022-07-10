@@ -50,7 +50,15 @@
           </div>
           <!-- individual link wrappers -->
           <div class="link-wrapper">
-            <a href="/profile">Profile</a>
+            <span id="profile">Profile</span>
+            <div class="account-wrapper">
+              <a href="/register">Register</a>
+              <% if(!thisUser){ %>
+              <a href="/login">Login</a>
+              <% } else{ %>
+              <a href="/logout">Logout</a>
+              <% } %>
+            </div>
           </div>
         </div>
       </nav>
@@ -60,4 +68,18 @@
         <div id="hero-txt" class="center"><%= title %></div>
       </section>
     </header>
+  </body>
+</html>
 
+<script>
+  let hover = document.querySelector(".account-wrapper");
+
+  hover.style.display = "none";
+  document.getElementById("profile").onclick = function () {
+    if (hover.style.display == "block") {
+      hover.style.display = "none";
+    } else {
+      hover.style.display = "block";
+    }
+  };
+</script>
