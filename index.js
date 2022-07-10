@@ -10,45 +10,52 @@
 // ===========================================
 
 const express = require("express");
-const path = require("path");
 const mongoose = require("mongoose");
+const path = require("path");
 const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
-const session = require("express-session");
-const flash = require("connect-flash");
 const passport = require("passport");
-
+const validator = require("validator");
+const bcrypt = require("bcrypt");
+const passportConfig = require("./models/passport-config");
+const cookieParser = require("cookie-parser");
+const flash = require("connect-flash");
+const session = require("express-session");
+const LocalStrategy = require("passport-local").Strategy;
 let User = require("./models/user");
 
 const app = express();
-
+passportConfig();
 mongoose.connect(
   "mongodb+srv://dgpurse:!Q%40W%23E%24R1q2w3e4r@buwebdev-cluster-1.078ar.mongodb.net/test"
 );
 
-app.use(
-  session({
-    secret: "secret",
-    resave: false,
-    saveUninitialized: true,
-  })
-);
-app.use(flash());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-
 //  set the view engine to html
 app.engine(".html", require("ejs").__express);
-
 //  assign the views path for my html
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "html");
 
 //  tell express that the public directory holds the site assets
 app.use(express.static(__dirname + "/public")); // allows me to connect to my css + image files
-
+app.use(
+  session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
+  // variable to show if user is logged in
+  // this variable is called in header.ejs
+  thisUser = res.locals.currentUser;
+  res.locals.errors = req.flash("error");
+  res.locals.infos = req.flash("info");
   next();
 });
 
@@ -63,6 +70,7 @@ app.get("/", (req, res, next) => {
       res.render("index", {
         title: "Pets-R-Us",
         users: users,
+        user: "test",
       });
     });
 });
@@ -71,6 +79,7 @@ app.get("/", (req, res, next) => {
 app.get("/grooming", (req, res) => {
   res.render("grooming", {
     title: "Grooming",
+    user: "test",
   }); //respond with grooming
 });
 
@@ -78,6 +87,7 @@ app.get("/grooming", (req, res) => {
 app.get("/boarding", (req, res) => {
   res.render("boarding", {
     title: "Boarding",
+    user: "test",
   }); //respond with boarding
 });
 
@@ -85,23 +95,25 @@ app.get("/boarding", (req, res) => {
 app.get("/training", (req, res) => {
   res.render("training", {
     title: "Training",
+    user: "test",
   }); //respond with boarding
 });
 
 //  profile page route
-app.get("/profile", (req, res) => {
+app.get("/register", (req, res) => {
   //  will find the list of users in the db and render them with the html
   User.find({}, function (err, users) {
-    res.render("profile", {
+    res.render("register", {
       title: "My Account",
       userList: users, //  user list that is iterated in /profile.html
+      user: "test",
     });
   });
 });
 
 //  post route for after the user submits their account creation
 app.post(
-  "/profile",
+  "/register",
   function (req, res, next) {
     //  assigning variables for the user data
     let username = req.body.username;
@@ -127,9 +139,49 @@ app.post(
   }, //  directing them back after authenticated
   passport.authenticate("", {
     successRedirect: "/",
-    failureRedirect: "/profile",
+    failureRedirect: "/register",
   })
 );
+
+app.get("/login", (req, res) => {
+  User.find({}, function (err, users) {
+    res.render("login", {
+      title: "Log In",
+      user: "test",
+    });
+  });
+});
+
+app.post(
+  "/login",
+  passport.authenticate("login", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true,
+  })
+);
+
+app.get("/logout", function (req, res, next) {
+  req.logOut(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/login");
+  });
+});
+
+// app.get("/logout", ensureAuthenticated, function (req, res) {
+//   res.render("/");
+// });
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    req.flash("info", "You must be logged in.");
+    res.redirect("/register");
+  }
+}
 
 //  send user back to homepage after submitting a contact request
 app.get("/submit", (req, res) => {
@@ -140,3 +192,69 @@ app.get("/submit", (req, res) => {
 
 //  set the server to listen on port 3000
 app.listen(3000);
+
+// let username = req.body.username;
+//   let password = req.body.password;
+
+//   User.find({ username: username }).then((user) => {
+//     if (user) {
+//       bcrypt.compare(password, user.password, function (err, result) {
+//         if (err) {
+//           flash("Incorrect Password");
+//         }
+//         if (result) {
+//           flash("Login Successful");
+//         }
+//       });
+//     } else {
+//       flash("Username not found");
+//     }
+//   });
+
+// initializePassport(passport, (email) => {
+//   return User.find(() =>  === username);
+// });
+
+// (passport) => {
+//   passport.use(
+//     new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+//       //match user
+//       User.findOne({ email: email })
+//         .then((user) => {
+//           if (!user) {
+//             return done(null, false, {
+//               message: "that email is not registered",
+//             });
+//           }
+//           //match password
+//           bcrypt.compare(password, user.password, (err, isMatch) => {
+//             if (err) throw err;
+
+//             if (isMatch) {
+//               return done(null, user);
+//             } else {
+//               return done(null, false, { message: "pass incorrect" });
+//             }
+//           });
+//         })
+//         .catch((err) => {
+//           console.log(err);
+//         });
+//     })
+//   );
+//   passport.serializeUser(function (user, done) {
+//     done(null, user.id);
+//   });
+
+//   passport.deserializeUser(function (id, done) {
+//     User.findById(id, function (err, user) {
+//       done(err, user);
+//     });
+//   });
+// };
+
+// passport.authenticate("local", {
+//   successRedirect: "/dashboard",
+//   failureRedirect: "/users/login",
+//   failureFlash: true,
+// });
