@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bCrypt-nodejs");
+const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcrypt");
+const flash = require("connect-flash");
 
 const SALT_FACTOR = 10; //  the hash amount, as directed by the book
 const noop = function () {}; //  empty function for password hashing, also from the book
