@@ -52,10 +52,12 @@
           <div class="link-wrapper">
             <span id="profile">Profile</span>
             <div class="account-wrapper">
-              <a href="/register">Register</a>
               <% if(!thisUser){ %>
+              <a href="/register">Register</a>
               <a href="/login">Login</a>
-              <% } else{ %>
+              <% } else{ %> Hello <%= thisUser.username %>
+              <a href="/schedule">Schedule</a>
+              <a href="/profile">My Profile</a>
               <a href="/logout">Logout</a>
               <% } %>
             </div>
