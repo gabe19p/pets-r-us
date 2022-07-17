@@ -1,0 +1,65 @@
+<%- include('header.ejs') %>
+
+<main id="container">
+  <!-- wrapper for login/sign-up -->
+  <div class="content-wrapper">
+    <div class="text-field center">Appointments</div>
+    <form action="/schedule" method="POST" class="center">
+      <!-- <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Username"
+        class="fill"
+        required
+        autofocus
+      /> -->
+      <br />
+      <br />
+      <input
+        type="text"
+        name="firstName"
+        id="firstName"
+        placeholder="First Name"
+        class="fill"
+        required
+        autofocus
+      />
+      <br />
+      <br />
+      <input
+        type="text"
+        name="lastName"
+        id="lastName"
+        placeholder="Last Name"
+        class="fill"
+        required
+      />
+      <br />
+      <br />
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email Address"
+        class="fill"
+        required
+      />
+      <br />
+      <br />
+      <select name="service" id="service" class="fill">
+        <option value="grooming">Grooming</option>
+        <option value="boarding">Boarding</option>
+        <option value="training">Training</option>
+      </select>
+      <br />
+      <br />
+
+      <button type="submit" class="btn fill">Book Appointment</button>
+    </form>
+    <br />
+    <br />
+  </div>
+</main>
+
+<%- include('footer.html') %>

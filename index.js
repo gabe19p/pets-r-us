@@ -22,6 +22,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 let User = require("./models/user");
+let Appointment = require("./models/appointments");
 
 const app = express();
 passportConfig();
@@ -119,7 +120,6 @@ app.post(
       if (err) {
         return next(err);
       }
-
       if (user) {
         req.flash("error", "User already exists");
         return res.redirect("/profile");
@@ -138,6 +138,7 @@ app.post(
   })
 );
 
+//  logging in
 app.get("/login", (req, res) => {
   User.find({}, function (err, users) {
     res.render("login", {
@@ -145,16 +146,51 @@ app.get("/login", (req, res) => {
     });
   });
 });
-
 app.post(
   "/login",
   passport.authenticate("login", {
-    successRedirect: "/",
+    successRedirect: "/schedule",
     failureRedirect: "/login",
     failureFlash: true,
   })
 );
 
+//  scheduling route
+app.get("/schedule", (req, res) => {
+  if (!thisUser) {
+    res.redirect("/login");
+  } else {
+    res.render("schedule.html", {
+      title: "Appointment Scheduling",
+    });
+  }
+});
+app.post("/schedule", (req, res, next) => {
+  let username = thisUser;
+  let firstName = req.body.firstName;
+  let lastName = req.body.lastName;
+  let email = req.body.email;
+  let service = req.body.service;
+
+  let appointment = new Appointment({
+    userName: username,
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    service: service,
+  });
+
+  Appointment.create(appointment, function (err, appointment) {
+    if (err) {
+      console.log(err);
+    } else {
+      appointment.save(next);
+      res.redirect("/");
+    }
+  });
+});
+
+//  logout the user
 app.get("/logout", function (req, res, next) {
   req.logOut(function (err) {
     if (err) {
@@ -164,6 +200,7 @@ app.get("/logout", function (req, res, next) {
   });
 });
 
+//  check authentication
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     next();
@@ -173,7 +210,7 @@ function ensureAuthenticated(req, res, next) {
   }
 }
 
-//  send user back to homepage after submitting a contact request
+//  send user back to homepage after submitting a contact request (fake)
 app.get("/submit", (req, res) => {
   res.render("index", {
     title: "Pets-R-Us",
@@ -182,69 +219,3 @@ app.get("/submit", (req, res) => {
 
 //  set the server to listen on port 3000
 app.listen(3000);
-
-// let username = req.body.username;
-//   let password = req.body.password;
-
-//   User.find({ username: username }).then((user) => {
-//     if (user) {
-//       bcrypt.compare(password, user.password, function (err, result) {
-//         if (err) {
-//           flash("Incorrect Password");
-//         }
-//         if (result) {
-//           flash("Login Successful");
-//         }
-//       });
-//     } else {
-//       flash("Username not found");
-//     }
-//   });
-
-// initializePassport(passport, (email) => {
-//   return User.find(() =>  === username);
-// });
-
-// (passport) => {
-//   passport.use(
-//     new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
-//       //match user
-//       User.findOne({ email: email })
-//         .then((user) => {
-//           if (!user) {
-//             return done(null, false, {
-//               message: "that email is not registered",
-//             });
-//           }
-//           //match password
-//           bcrypt.compare(password, user.password, (err, isMatch) => {
-//             if (err) throw err;
-
-//             if (isMatch) {
-//               return done(null, user);
-//             } else {
-//               return done(null, false, { message: "pass incorrect" });
-//             }
-//           });
-//         })
-//         .catch((err) => {
-//           console.log(err);
-//         });
-//     })
-//   );
-//   passport.serializeUser(function (user, done) {
-//     done(null, user.id);
-//   });
-
-//   passport.deserializeUser(function (id, done) {
-//     User.findById(id, function (err, user) {
-//       done(err, user);
-//     });
-//   });
-// };
-
-// passport.authenticate("local", {
-//   successRedirect: "/dashboard",
-//   failureRedirect: "/users/login",
-//   failureFlash: true,
-// });
