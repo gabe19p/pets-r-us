@@ -35,6 +35,7 @@ app.engine(".html", require("ejs").__express);
 //  assign the views path for my html
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "html");
+app.set("port", process.env.PORT || 3000);
 
 //  tell express that the public directory holds the site assets
 app.use(express.static(__dirname + "/public")); // allows me to connect to my css + image files
@@ -74,21 +75,18 @@ app.get("/", (req, res, next) => {
       });
     });
 });
-
 //  grooming route via anchor link or direct paste
 app.get("/grooming", (req, res) => {
   res.render("grooming", {
     title: "Grooming",
   }); //respond with grooming
 });
-
 //  boarding route via nav bar
 app.get("/boarding", (req, res) => {
   res.render("boarding", {
     title: "Boarding",
   }); //respond with boarding
 });
-
 //  training route via nav bar
 app.get("/training", (req, res) => {
   res.render("training", {
@@ -96,7 +94,7 @@ app.get("/training", (req, res) => {
   }); //respond with boarding
 });
 
-//  profile page route
+//  register route
 app.get("/register", (req, res) => {
   //  will find the list of users in the db and render them with the html
   User.find({}, function (err, users) {
@@ -106,39 +104,45 @@ app.get("/register", (req, res) => {
     });
   });
 });
-
 //  post route for after the user submits their account creation
-app.post(
-  "/register",
-  function (req, res, next) {
-    //  assigning variables for the user data
-    let username = req.body.username;
-    let password = req.body.password;
-    let email = req.body.email;
-    //  three options here, err/user for incorrect or duplicate name
-    User.findOne({ username: username }, function (err, user) {
-      if (err) {
-        return next(err);
-      }
-      if (user) {
-        req.flash("error", "User already exists");
-        return res.redirect("/profile");
-      } //  this will create the new user if no errors
-      let newUser = new User({
-        username: username,
-        password: password,
-        email: email,
-      }); //  saving the user to the db
-      newUser.save(next);
-    });
-  }, //  directing them back after authenticated
-  passport.authenticate("", {
-    successRedirect: "/",
-    failureRedirect: "/register",
-  })
-);
+app.post("/register", function (req, res, next) {
+  //  assigning variables for the user data
+  let username = req.body.username;
+  let password = req.body.password;
+  let email = req.body.email;
 
-//  logging in
+  let newUser = new User({
+    username: username,
+    password: password,
+    email: email,
+  });
+  //  saving the user to the db
+  User.create(newUser, function (err, user) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/");
+    }
+  });
+});
+
+// //  three options here, err/user for incorrect or duplicate name
+// User.findOne({ username: username }, function (err, user) {
+//   console.log("found");
+//   if (err) {
+//     console.log("error");
+//     return next(err);
+//   }
+//   if (user) {
+//     console.log("taken");
+//     req.flash("error", "User already exists");
+//     return res.redirect("/register");
+//   } else {
+
+// //   } // end else statement
+// }); //  end of findOne
+
+//  logging in route
 app.get("/login", (req, res) => {
   User.find({}, function (err, users) {
     res.render("login", {
@@ -149,7 +153,7 @@ app.get("/login", (req, res) => {
 app.post(
   "/login",
   passport.authenticate("login", {
-    successRedirect: "/schedule",
+    successRedirect: "/profile",
     failureRedirect: "/login",
     failureFlash: true,
   })
@@ -190,6 +194,30 @@ app.post("/schedule", (req, res, next) => {
   });
 });
 
+//  profile route
+app.get("/profile", (req, res) => {
+  if (!thisUser) {
+    res.redirect("/login");
+  } else {
+    //  email variable for current user
+    email = thisUser.email;
+    //  find the appointments based on their email
+    Appointment.find({ email: email }, function (err, email) {
+      let appointments = email;
+      console.log(email);
+      //  return err or render page
+      if (err) {
+        return next(err);
+      } else {
+        res.render("profile.html", {
+          title: "My Profile",
+          appointmentsData: appointments,
+        });
+      }
+    });
+  }
+});
+
 //  logout the user
 app.get("/logout", function (req, res, next) {
   req.logOut(function (err) {
@@ -218,4 +246,4 @@ app.get("/submit", (req, res) => {
 });
 
 //  set the server to listen on port 3000
-app.listen(3000);
+app.listen(app.get("port"));

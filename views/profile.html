@@ -1,0 +1,36 @@
+<%- include('header.ejs') %>
+
+<main id="container">
+  <!-- wrapper for login/sign-up -->
+  <div class="content-wrapper">
+    <div class="large-text center">Welcome <%= thisUser.username %></div>
+    <br />
+    <br />
+    <div class="text-field center">Scheduled Appointments</div>
+    <div class="text-field">
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Service</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- build list of user's appointments -->
+          <% appointmentsData.forEach(appointment => { %>
+          <tr>
+            <td><%= appointment.firstName %></td>
+            <td><%= appointment.lastName %></td>
+            <td><%= appointment.email %></td>
+            <td><%= appointment.service %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<%- include('footer.html') %>
