@@ -246,4 +246,4 @@ app.get("/submit", (req, res) => {
 });
 
 //  set the server to listen on port 3000
-app.listen(app.get("port"));
+app.listen(3000);
